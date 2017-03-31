@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WSPWeiXinPayHelper.h"
 typedef NS_ENUM(NSInteger, WSPayType) {
     WSPayTypeWeiXin = 0,
     WSPayTypeAlipay,
