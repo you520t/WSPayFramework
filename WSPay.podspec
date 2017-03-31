@@ -12,5 +12,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target    = '8.0'
   s.ios.vendored_framework   = 'ios/WSPay.framework'
+  s.dependency 'ShareSDK3/ShareSDKPlatforms/WeChat', '~> 3.3.2'
+  
   s.ios.resource=['ios/Resource/**/*.{xcassets,wav,mp3,xib,txt}']
 end
