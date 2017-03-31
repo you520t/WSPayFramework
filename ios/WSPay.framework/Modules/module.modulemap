@@ -1,0 +1,6 @@
+framework module WSPay {
+  umbrella header "WSPay.h"
+
+  export *
+  module * { export * }
+}
