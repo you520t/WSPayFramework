@@ -13,6 +13,8 @@ typedef NS_ENUM(NSInteger, WSPayType) {
     WSPayTypeHiCard
 };
 
+
+
 @interface WSPayTypeModel : NSObject
 @property (nonatomic, strong) NSString *schemeKey;
 @property (nonatomic, assign) WSPayType payType;
@@ -23,6 +25,6 @@ typedef NS_ENUM(NSInteger, WSPayType) {
 @property (nonatomic, strong, readonly) NSArray<WSPayTypeModel *> *payTypeDic;
 + (instancetype)shardInstance;
 -(void)registerApp:(NSArray<WSPayTypeModel *> *)payTypeDic;
-+(BOOL)handleOpenURL:(NSURL *)url completion:(WSPayResultBlock)completion;
++(BOOL)handleOpenURL:(NSURL *)url completion:(void(^)())completion;
 +(void)sendPay:(WSPayType)payType withAmount:(long long)amount completion:(void(^)(id response)) completion;
 @end
