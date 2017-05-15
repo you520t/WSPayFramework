@@ -10,4 +10,5 @@
 
 @interface WSPayAPI : NSObject
 +(UIViewController *)payViewController;
++(UIViewController *)payWebViewControllerWithUrlString:(NSString *)urlString;
 @end

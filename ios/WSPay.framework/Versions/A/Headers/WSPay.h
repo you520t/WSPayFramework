@@ -7,24 +7,55 @@
 //
 
 #import <Foundation/Foundation.h>
+//支付类型
 typedef NS_ENUM(NSInteger, WSPayType) {
-    WSPayTypeWeiXin = 0,
-    WSPayTypeAlipay,
-    WSPayTypeHiCard
+    WSPayTypeWeiXin = 4,
+    WSPayTypeAlipay=5,
+    WSPayTypeHiCard=2,
+    WSPayTypeAll
 };
 
+/**
+支付结果
+ **/
+typedef NS_ENUM(NSInteger,WSPayResultCode) {
+    WSPayResultPaySucceed =0,
+    WSPayResultUserCancel =1,
+    WSPayResultPayFailed =2,
+    WSPayResultNoMobile =3,
+    WSPayResultInterfaceError =4
+};
 
+//  支付吊起的入口类型
+typedef NS_ENUM(NSInteger,WSPayEntrance) {
+    WSPayEntranceByApp =0, //  原生吊起
+    WSPayEntranceByWebView //  webview吊起
+};
 
+//支付类型model
 @interface WSPayTypeModel : NSObject
 @property (nonatomic, strong) NSString *schemeKey;
 @property (nonatomic, assign) WSPayType payType;
 -(id)initWithSchemeKey:(NSString *)schemeKey payType:(WSPayType)payType;
 @end
 
+// 支付结果
+@interface WSPayResultModel : NSObject
+@property (nonatomic, strong) NSString * errString; // 支付结果描述
+@property (nonatomic, assign) WSPayResultCode code; // 支付状态码
+@end
+
+typedef void(^PayResult)(WSPayResultModel *);
+
 @interface WSPay : NSObject
-@property (nonatomic, strong, readonly) NSArray<WSPayTypeModel *> *payTypeDic;
+
 + (instancetype)shardInstance;
--(void)registerApp:(NSArray<WSPayTypeModel *> *)payTypeDic;
+//  需传递对应商户的channelId，channelId是给网关使用
+-(void)registerApp:(NSArray<WSPayTypeModel *> *)payTypeDic channelId:(NSString *)channelId;
+
 +(BOOL)handleOpenURL:(NSURL *)url completion:(void(^)())completion;
-+(void)sendPay:(WSPayType)payType withAmount:(long long)amount completion:(void(^)(id response)) completion;
+-(void)wsStartPayWithPaymentParameters:(NSDictionary *)parameters withController:(UIViewController *)controller completion:(PayResult) completion;
+-(BOOL)handleWebViewRequestWithWebView:(WKWebView *)webView action:(WKNavigationAction *)action withController:(UIViewController *)controller completion:(PayResult) completion;
+//url转换参数
++(NSDictionary *)convertOrderInfoWithUrl:(NSString *)url;
 @end
