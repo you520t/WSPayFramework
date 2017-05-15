@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WSPChooseViewController">
+            <connections>
+                <outlet property="actionButton" destination="Zw3-AG-VAQ" id="jJn-jL-yVG"/>
+                <outlet property="backButton" destination="4tk-H5-64s" id="HAX-AX-mha"/>
+                <outlet property="footerView" destination="6Ue-vp-17A" id="b7W-Fc-VtU"/>
+                <outlet property="titleLabel" destination="3AN-ON-Iqe" id="aAi-Y7-jKh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="337" height="469"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AN-ON-Iqe">
+                    <rect key="frame" x="0.0" y="0.0" width="337" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="fwT-k0-hk3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PmF-Hq-9gJ">
+                    <rect key="frame" x="0.0" y="43" width="337" height="0.5"/>
+                    <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="rge-Wl-e3M"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ue-vp-17A">
+                    <rect key="frame" x="0.0" y="409" width="337" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zw3-AG-VAQ">
+                            <rect key="frame" x="15" y="1" width="307" height="44"/>
+                            <color key="backgroundColor" red="0.87069529294967651" green="0.11606057733297348" blue="0.056793756783008575" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="xeO-Xn-QSv"/>
+                            </constraints>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionButtonSelect:" destination="-1" eventType="touchUpInside" id="KzM-MV-pgS"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Zw3-AG-VAQ" firstAttribute="leading" secondItem="6Ue-vp-17A" secondAttribute="leading" constant="15" id="MwB-3S-Wqe"/>
+                        <constraint firstAttribute="bottom" secondItem="Zw3-AG-VAQ" secondAttribute="bottom" constant="15" id="YXV-fJ-v9H"/>
+                        <constraint firstAttribute="height" constant="60" id="mXz-Bb-24j"/>
+                        <constraint firstAttribute="trailing" secondItem="Zw3-AG-VAQ" secondAttribute="trailing" constant="15" id="rFC-Yg-1cd"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tk-H5-64s">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="50f-Iw-ZrU"/>
+                    </constraints>
+                    <state key="normal" image="WSP_Tanchuangfanhui"/>
+                    <connections>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="Efr-2q-hRl"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3AN-ON-Iqe" secondAttribute="trailing" id="7lz-p7-rLn"/>
+                <constraint firstItem="4tk-H5-64s" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HlM-3Z-Dyu"/>
+                <constraint firstItem="PmF-Hq-9gJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LZN-P2-jPf"/>
+                <constraint firstAttribute="trailing" secondItem="PmF-Hq-9gJ" secondAttribute="trailing" id="Mtm-u3-u7h"/>
+                <constraint firstItem="PmF-Hq-9gJ" firstAttribute="top" secondItem="3AN-ON-Iqe" secondAttribute="bottom" constant="-1" id="SwV-ZH-bZC"/>
+                <constraint firstAttribute="bottom" secondItem="6Ue-vp-17A" secondAttribute="bottom" id="Vj3-sJ-aew"/>
+                <constraint firstItem="PmF-Hq-9gJ" firstAttribute="top" secondItem="4tk-H5-64s" secondAttribute="bottom" id="joc-Qi-gD7"/>
+                <constraint firstItem="3AN-ON-Iqe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="key-WJ-D9U"/>
+                <constraint firstAttribute="trailing" secondItem="6Ue-vp-17A" secondAttribute="trailing" id="lF4-u1-Sjv"/>
+                <constraint firstItem="6Ue-vp-17A" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lIb-R8-XYp"/>
+                <constraint firstItem="3AN-ON-Iqe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oZP-fR-sHr"/>
+                <constraint firstItem="4tk-H5-64s" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="v56-YP-4an"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="14.5" y="-44.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="WSP_Tanchuangfanhui" width="8" height="16"/>
+    </resources>
+</document>
