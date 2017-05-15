@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 //支付类型
 typedef NS_ENUM(NSInteger, WSPayType) {
     WSPayTypeWeiXin = 4,
