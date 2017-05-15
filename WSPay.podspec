@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.ios.vendored_framework   = 'ios/WSPay.framework'
   s.dependency 'ShareSDK3/ShareSDKPlatforms/WeChat', '~> 3.3.2'
   s.dependency 'AlipaySDK-2.0'
+  s.dependency 'Masonry', '~> 0.6.1'
   
   s.ios.resource=['ios/Resource/**/*.{xcassets,wav,mp3,xib,txt,cer}']
 end
