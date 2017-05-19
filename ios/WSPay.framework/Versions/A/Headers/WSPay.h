@@ -56,6 +56,8 @@ typedef NS_ENUM(NSInteger,WSPayEntrance) {
 @interface WSPayResultModel : NSObject
 @property (nonatomic, strong) NSString * errString; // 支付结果描述
 @property (nonatomic, assign) WSPayResultCode code; // 支付状态码
+@property (nonatomic, assign) WSPayType payType; // 支付方式
+@property (nonatomic, strong) NSDictionary * extraDictionary; // Hi卡支付数据
 @end
 
 typedef void(^PayResult)(WSPayResultModel *);
