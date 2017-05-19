@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WSPHiCardInfoViewController">
             <connections>
                 <outlet property="returnButton" destination="Arl-sy-s1A" id="VYp-o0-udA"/>
-                <outlet property="textView" destination="as3-sC-xFJ" id="s0c-eV-DFp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="FA5-To-DIg" id="8P7-9r-gfF"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -73,26 +73,20 @@
                                 <constraint firstAttribute="height" constant="0.5" id="c8N-eg-juH"/>
                             </constraints>
                         </view>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="as3-sC-xFJ">
-                            <rect key="frame" x="15" y="6.5" width="290" height="489.5"/>
+                        <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FA5-To-DIg">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="489"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
-                            <string key="text">一、微赛 HI 卡是
-用户应当出于合法、正当目的以合理方式获取和使用微赛红包，如果发现用户存在违法违规行为，微赛有权该用户使用红包或对用户账号采取临时或永久禁用等措施，并通过法律途径依法追究该用户的法律责任。</string>
-                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
+                        </webView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="as3-sC-xFJ" secondAttribute="bottom" id="6kJ-j4-6b9"/>
-                        <constraint firstItem="as3-sC-xFJ" firstAttribute="leading" secondItem="aAY-Li-rbB" secondAttribute="leading" constant="15" id="EJe-8t-aI6"/>
+                        <constraint firstAttribute="trailing" secondItem="FA5-To-DIg" secondAttribute="trailing" id="5Qk-3Z-0sa"/>
+                        <constraint firstAttribute="bottom" secondItem="FA5-To-DIg" secondAttribute="bottom" constant="7" id="S3p-Gg-Z1F"/>
                         <constraint firstAttribute="trailing" secondItem="2Lg-71-E3k" secondAttribute="trailing" id="T6U-Ia-UwB"/>
-                        <constraint firstItem="as3-sC-xFJ" firstAttribute="top" secondItem="2Lg-71-E3k" secondAttribute="bottom" constant="6" id="dVF-ls-nsw"/>
-                        <constraint firstAttribute="trailing" secondItem="as3-sC-xFJ" secondAttribute="trailing" constant="15" id="e5J-GP-VVi"/>
                         <constraint firstItem="2Lg-71-E3k" firstAttribute="leading" secondItem="aAY-Li-rbB" secondAttribute="leading" id="hYg-Ts-cyx"/>
+                        <constraint firstItem="FA5-To-DIg" firstAttribute="leading" secondItem="aAY-Li-rbB" secondAttribute="leading" id="nmC-a3-abO"/>
                         <constraint firstItem="2Lg-71-E3k" firstAttribute="top" secondItem="aAY-Li-rbB" secondAttribute="top" id="sdE-IE-4Ks"/>
+                        <constraint firstItem="FA5-To-DIg" firstAttribute="top" secondItem="2Lg-71-E3k" secondAttribute="bottom" constant="-0.5" id="yuB-64-baK"/>
                     </constraints>
                 </view>
             </subviews>
