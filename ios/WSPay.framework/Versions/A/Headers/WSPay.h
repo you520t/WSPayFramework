@@ -62,6 +62,7 @@ typedef NS_ENUM(NSInteger,WSPayEntrance) {
 
 typedef void(^PayResult)(WSPayResultModel *);
 typedef void(^DeleteResult) (WSPDeleteOrderCode);
+typedef void(^ProductList)(NSArray *);
 
 @interface WSPay : NSObject
 
@@ -85,13 +86,26 @@ typedef void(^DeleteResult) (WSPDeleteOrderCode);
  */
 +(BOOL)handleOpenURL:(NSURL *)url completion:(void(^)())completion;
 
-/**
+/** 
  支付调取方法
 
- @param parameters 支付参数
+ @param parameters 支付参数(必传参数:appId 对应app的appId,mobile 用户手机号;若为游戏消耗品则还有:productId 项目id,qunatity 购买数量;其他不走IAP的商品传的参数为:moneyBaseFen 支付价格以分为单位 businessOrderNo 订单id)
  @param controller 是显示UI用
  @param completion 支付完成的回调
  */
 -(void)wsStartPayWithPaymentParameters:(NSDictionary *)parameters withController:(UIViewController *)controller completion:(PayResult) completion;
+
+/**
+ 这个方法是获取App在苹果后台注册的IAP项目列表，也可以自行通过后端获取
+
+ @param businessId 对应app的商户id
+ @param completion 回调给app的IAP项目列表
+ */
+-(void)getAppProductListByBusinessId:(NSString *)businessId productList:(ProductList)completion;
+
+/**
+ 这个是IAP恢复购买非消耗品的方法（暂时还未启用）
+ */
+-(void)restoreTranscation;
 
 @end
