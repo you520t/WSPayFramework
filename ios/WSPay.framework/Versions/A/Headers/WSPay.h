@@ -13,9 +13,10 @@
  支付类型
  **/
 typedef NS_ENUM(NSInteger, WSPayType) {
-    WSPayTypeWeiXin = 4,
-    WSPayTypeAlipay=5,
-    WSPayTypeHiCard=2,
+    WSPayTypeWeiXin = 4, //  微信支付
+    WSPayTypeAlipay=5, //  支付宝支付
+    WSPayTypeHiCard=2, // Hi卡支付
+    WSPayTypeIAP=8, //IAP支付
     WSPayTypeAll
 };
 
@@ -26,23 +27,10 @@ typedef NS_ENUM(NSInteger,WSPayResultCode) {
     WSPayResultPaySucceed =0,  //支付成功
     WSPayResultUserCancel =1,  // 用户取消支付
     WSPayResultPayFailed =2, // 支付失败
-    WSPayResultMissingRequiredParameter =3, // 缺少必要参数（手机号or appid）
+    WSPayResultMissingRequiredParameter =3, // 缺少必要参数（appid）
     WSPayResultInterfaceError =4,//  接口错误
-    WSPayResutNoChannelIdAndSecret=5  //  缺少channelId或APPSecret
-};
-
-/**
- 取消的回调code
- */
-typedef NS_ENUM(NSInteger,WSPDeleteOrderCode) {
-    WSPDeleteOrderCodeSucceed=0,
-    WSPDeleteOrderCodeFailed=1
-};
-
-//  支付吊起的入口类型
-typedef NS_ENUM(NSInteger,WSPayEntrance) {
-    WSPayEntranceByApp =0, //  原生吊起
-    WSPayEntranceByWebView //  webview吊起
+    WSPayResutNoChannelIdAndSecret=5,  //  缺少channelId或APPSecret
+    WSPayResultDontIMPDelegate=6 // 未实现相应的代理
 };
 
 //支付类型model
@@ -61,10 +49,25 @@ typedef NS_ENUM(NSInteger,WSPayEntrance) {
 @end
 
 typedef void(^PayResult)(WSPayResultModel *);
-typedef void(^DeleteResult) (WSPDeleteOrderCode);
 typedef void(^ProductList)(NSArray *);
+typedef void(^WSPCommonBlock)(void); // 通用的回调SDK
+
+@protocol WSPPaySDKDelegate <NSObject>
+
+@required
+/**
+ 这个方法是虚拟货品当在SDK生成了订单id(未在app端服务器生成订单id)，app接收到订单id上传给服务器，上传完成回调SDK走后面的逻辑
+ 
+ @param action 获取订单id
+ @param completion 这个是app将订单id上传给服务器之后回调SDK
+ */
+-(void)sdkHasProduceOrderId:(NSString *)orderId uploadToServerCompletion:(WSPCommonBlock)completion;
+
+@end
 
 @interface WSPay : NSObject
+
+@property (nonatomic,weak)id<WSPPaySDKDelegate>delegate;
 
 + (instancetype)shardInstance;
 
@@ -89,7 +92,7 @@ typedef void(^ProductList)(NSArray *);
 /** 
  支付调取方法
 
- @param parameters 支付参数(必传参数:appId 对应app的appId,mobile 用户手机号;若为游戏消耗品则还有:productId 项目id,qunatity 购买数量;其他不走IAP的商品传的参数为:moneyBaseFen 支付价格以分为单位 businessOrderNo 订单id)
+ @param parameters 支付参数(必传参数:appId 对应app的appId,mobile 用户手机号;若为游戏消耗品(IAP)则还有:productId 项目id,qunatity 购买数量;其他不走IAP的商品传的参数为:moneyBaseFen 支付价格以分为单位 businessOrderNo 订单id)
  @param controller 是显示UI用
  @param completion 支付完成的回调
  */
@@ -99,7 +102,7 @@ typedef void(^ProductList)(NSArray *);
  这个方法是获取App在苹果后台注册的IAP项目列表，也可以自行通过后端获取
 
  @param businessId 对应app的商户id
- @param completion 回调给app的IAP项目列表
+ @param completion 回调给app的IAP项目列表(存储的是字典,productId:项目id,itemName:项目名称,itemPrice:项目价格(分))
  */
 -(void)getAppProductListByBusinessId:(NSString *)businessId productList:(ProductList)completion;
 
@@ -107,5 +110,7 @@ typedef void(^ProductList)(NSArray *);
  这个是IAP恢复购买非消耗品的方法（暂时还未启用）
  */
 -(void)restoreTranscation;
+
+-(void)setHostUrl:(NSString *)url;
 
 @end
